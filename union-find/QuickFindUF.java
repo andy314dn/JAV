@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 /**
  * public class	UF
  * --------------------------------------------------------
@@ -13,18 +16,6 @@
  *		- read in pair of integers from standard input
  *		- if they are not yet connected, connect them and print out pair 
  */
-public static void main(String[] args) {
-	int N = StdIn.readInt();
-	UF uf = new UF(N);
-	while (!StdIn.isEmpty()) {
-		int p = StdIn.readInt();
-		int q = StdIn.readInt();
-		if (!uf.connected(p, q)) {
-			uf.union(p, q);
-			StdOut.println(p + " " + q);
-		}
-	}
-}
 
 public class QuickFindUF {
 	private int[] id;
@@ -55,4 +46,24 @@ public class QuickFindUF {
 			if (id[i] == pid)
 				id[i] = qid;
 	}
+
+	public static void main(String[] args) {
+		int N = StdIn.readInt();
+		QuickFindUF qfuf = new QuickFindUF(N);
+		while (!StdIn.isEmpty()) {
+			int p = StdIn.readInt();
+			int q = StdIn.readInt();
+			if (!qfuf.connected(p, q)) {
+				qfuf.union(p, q);
+				StdOut.println(p + " " + q);
+			}
+		}
+	}
 }
+
+/**
+ * Compile: javac-algs4 QuickFindUF.java
+ * Execute: java-algs4 QuickFindUF < tinyUF.txt
+ * checkstyle: checkstyle-algs4 QuickFindUF.java
+ * findbugs: findbugs-algs4 QuickFindUF.class
+ */
